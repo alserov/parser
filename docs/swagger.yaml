@@ -1,0 +1,50 @@
+info:
+  contact: {}
+  title: Parser API
+  version: "1.0"
+paths:
+  /v1/parse:
+    get:
+      consumes:
+      - application/json
+      description: Parse page
+      parameters:
+      - description: page url
+        in: query
+        name: url
+        required: true
+        type: string
+      - description: tag name to be parsed
+        in: query
+        name: tag
+        required: true
+        type: string
+      - description: value that has to be included
+        in: query
+        name: incl
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: string
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Parse
+      tags:
+      - parser
+swagger: "2.0"
